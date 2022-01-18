@@ -133,7 +133,7 @@ usage(const char *name)
 	fprintf(stderr, "    -# key         (# is an integer value, eg \"-1\") register for key and report # notifications\n");
 	fprintf(stderr, "    -g key         get state value for key\n");
 	fprintf(stderr, "    -s key val     set state value for key\n");
-	fprintf(stderr, "    --dump         dumps metadata to a file in /var/run/\n");
+	fprintf(stderr, "    --dump         dumps metadata to a file in /tmp/\n");
 }
 
 // Triggers a notifyd dump
@@ -142,11 +142,11 @@ notifyutil_dump()
 {
 	int ret;
 
-	ret = notify_dump_status("/var/run/notifyd.status");
+	ret = notify_dump_status("/tmp/notifyd.status");
 
 	if(ret == NOTIFY_STATUS_OK)
 	{
-		fprintf(stdout, "Notifyd dump success! New file created at /var/run/notifyd.status\n");
+		fprintf(stdout, "Notifyd dump success! New file created at /tmp/notifyd.status\n");
 	} else {
 		fprintf(stdout, "Notifyd dump failed with %x\n", ret);
 	}
