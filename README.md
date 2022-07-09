@@ -14,3 +14,11 @@ $ defaults write com.apple.Pasteboard PlaySoundOnPaste -bool YES
 # Rather than killing a targeted process, fire a notification when possible as this will not always be an effective option
 $ notifyutil -p com.apple.Pasteboard.PlaySoundOnPaste 
 ```
+```shell
+# to get a list of all domains that have ever been triggered
+$ sudo notifyutil —-dump
+# will create notifyd.status in current directory, but
+# the file was dumped with root, so run with sudo again
+$ sudo cat notifyd.status | grep name | sort -u
+```
+

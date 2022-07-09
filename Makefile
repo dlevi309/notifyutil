@@ -1,12 +1,10 @@
-CC = gcc-iphone
-TARGET = notifyutil
-SRC = src/*.c
-FLAGS = $(CFLAGS)
-CFLAGS =
-SIGN   := ldid -Sent.xml
+CC = cc
 
-all: $(TARGET)
+.PHONY: all clean
 
-$(TARGET): $(SRC)
-	$(CC) -o $(TARGET) $(FLAGS) $(SRC)
-	$(SIGN) $(TARGET)
+all:
+	$(CC) notifyutil.c -o notifyutil
+	ldid -Sent.xml notifyutil
+
+clean:
+	$(RM) notifyutil
